@@ -2,3 +2,14 @@
   padding-bottom: 100%;
   float: left;
 }
+
+.login-container {
+  margin-left: 30%;
+  margin-right: 30%;
+}
+
+main{
+  margin-top: 1%;
+  margin-left: 20%;
+  margin-right: 25%;
+}
