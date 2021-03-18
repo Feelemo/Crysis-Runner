@@ -1,3 +1,7 @@
+<?php
+header("Access-Control-Allow-Origin: *");
+include 'printUserDetails.php';
+ ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
@@ -13,11 +17,11 @@
         <h1 class="navbar-brand">CRYSIS-RUNNER</h1>
         <div class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Username
+            <?php echo $username; ?>
           </a>
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
           <div class="aligning">
-          <div class="dropdown-header">Position: (position)</div>
+          <div class="dropdown-header">Position: Volunteer</div>
           <button class="dropdown-item" type="button"><a>Edit User Profile</a></button>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item text-danger" href="">Logout</a>
@@ -37,7 +41,7 @@
       <p class="h4 mb-4">Username Profile</p>
       <div class="form-group row">
         <label class="col-sm-2 col-form-label">Current Full Name: </label>
-        <label class="col-sm-2 col-form-label">Full Name Here</label>
+        <label class="col-sm-2 col-form-label"><?php echo $name; ?></label>
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#UpdateFullNameModal">
           Update Full Name
         </button>
@@ -51,7 +55,7 @@
       <hr>
         <div class="form-group row">
           <label for="inputPhone3" class="col-sm-2 col-form-label">Phone Number:</label>
-            <label for="inputPhone3" class="col-sm-2 col-form-label">Phone Number</label>
+            <label for="inputPhone3" class="col-sm-2 col-form-label"><?php echo $phone; ?></label>
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#UpdatePhoneModal">
               Update Phone Number
             </button>
@@ -82,11 +86,11 @@
         </button>
       </div>
       <div class="modal-body">
-        <form>
+        <form name="updateNameForm" id="updateNameForm">
           <div class="form-group">
             <div class="form-group row">
             <label class="col-sm-4 col-form-label">Current Full Name: </label>
-            <label class="col-sm-4 col-form-label">Full Name Here</label>
+            <label class="col-sm-4 col-form-label"><?php echo $name; ?></label>
           </div>
             <div class="form-group row">
               <label for="inputName3" class="col-sm-4 col-form-label">New Full Name</label>
@@ -98,7 +102,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-        <button type="button" class="btn btn-primary">Update Full Name</button>
+        <button type="submit" class="btn btn-primary">Update Full Name</button>
       </div>
       </form>
     </div>
@@ -115,7 +119,7 @@
         </button>
       </div>
       <div class="modal-body">
-        <form>
+        <form name="updatePasswordForm" id="updatePasswordForm">
           <div class="form-group">
             <div class="form-group row">
               <label class="col-sm-4 col-form-label">Old Password: </label>
@@ -139,7 +143,7 @@
           </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-        <button type="button" class="btn btn-primary">Update Password</button>
+        <button type="submit" class="btn btn-primary">Update Password</button>
       </div>
       </form>
     </div>
@@ -155,13 +159,13 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <form>
+        <form name="updatePhoneForm" id="updatePhoneForm">
         <div class="modal-body">
 
             <div class="form-group">
               <div class="form-group row">
               <label class="col-sm-4 col-form-label">Current Full Name: </label>
-              <label class="col-sm-4 col-form-label">xxx-xxxxxxxx</label>
+              <label class="col-sm-4 col-form-label"><?php echo $phone; ?></label>
             </div>
               <div class="form-group row">
                 <label for="inputPhoneNum3" class="col-sm-4 col-form-label">New Phone Num</label>
@@ -173,7 +177,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-          <button type="button" class="btn btn-primary">Update Phone Number</button>
+          <button type="submit" class="btn btn-primary">Update Phone Number</button>
         </div>
         </form>
       </div>
@@ -225,4 +229,11 @@
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script type="text/javascript" src="CrysisRunner.js">
+  </script>
+  <script type="text/javascript">
+    updateFullName()
+    updatePassword()
+    updatePhone()
+  </script>
 </html>

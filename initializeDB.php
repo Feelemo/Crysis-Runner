@@ -26,7 +26,8 @@ $sql = "CREATE TABLE User (
   userID BIGINT(10) UNSIGNED UNIQUE AUTO_INCREMENT PRIMARY KEY,
   username VARCHAR(20) NOT NULL UNIQUE,
   password VARCHAR(20) NOT NULL,
-  phone CHAR(11) NOT NULL,
+  name VARCHAR(50) NOT NULL,
+  phone CHAR(12) NOT NULL,
   position VARCHAR(10) NOT NULL,
   dateJoined DATE NOT NULL
 )";
@@ -87,14 +88,14 @@ if ($conn->query($sql) === TRUE) {
 $sql = "SELECT * FROM User;";
 $result = $conn->query($sql);
 if(mysqli_num_rows($result) == 0){
-  $sql = "INSERT INTO User(username, password, phone, position, dateJoined)
-  VALUES ('manager', 'password', '601-2345678', 'Manager', '2020-04-08');";
-  $sql .= "INSERT INTO User(username, password, phone, position, dateJoined)
-  VALUES ('admin', 'password', '601-2348424', 'Admin', '2020-12-08');";
-  $sql .= "INSERT INTO User(username, password, phone, position, dateJoined)
-  VALUES ('volunteer1', 'password', '601-2323524', 'Volunteer', '2021-01-08');";
-  $sql .= "INSERT INTO User(username, password, phone, position, dateJoined)
-  VALUES ('volunteer2', 'password', '601-2637524', 'Volunteer', '2021-01-08');";
+  $sql = "INSERT INTO User(username, password, name, phone, position, dateJoined)
+  VALUES ('manager', 'password', 'Man Ager', '601-23456782', 'Manager', '2020-04-08');";
+  $sql .= "INSERT INTO User(username, password, name, phone, position, dateJoined)
+  VALUES ('admin', 'password', 'Ad Min', '601-23484243', 'Admin', '2020-12-08');";
+  $sql .= "INSERT INTO User(username, password, name, phone, position, dateJoined)
+  VALUES ('volunteer1', 'password', 'Vol Unter', '601-23235241', 'Volunteer', '2021-01-08');";
+  $sql .= "INSERT INTO User(username, password, name, phone, position, dateJoined)
+  VALUES ('volunteer2', 'password', 'Volun Teer', '601-26375243', 'Volunteer', '2021-01-08');";
 
   if ($conn->multi_query($sql) === TRUE) {
     echo "New records created successfully<br>";
