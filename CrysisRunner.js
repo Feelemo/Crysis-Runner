@@ -13,7 +13,7 @@ function login(){
                 window.location.href = "RecordStaff.php";
               }
               if(position == "Admin"){
-                window.location.href = "OrganizeTrip.html";
+                window.location.href = "OrganizeTrip.php";
               }
               if(position == "Volunteer"){
                 window.location.href = "VolunteerMenu.php";

@@ -1,3 +1,7 @@
+<?php
+header("Access-Control-Allow-Origin: *");
+include 'printUserDetails.php';
+ ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
@@ -13,7 +17,7 @@
         <h1 class="navbar-brand">CRYSIS-RUNNER</h1>
         <div class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            A CRS Staff Name
+            <?php echo $username; ?>
           </a>
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
           <div class="aligning">
