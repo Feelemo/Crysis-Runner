@@ -59,7 +59,7 @@ if ($conn->query($sql) === TRUE) {
 $sql = "CREATE TABLE Document (
   documentID BIGINT(10) UNSIGNED UNIQUE AUTO_INCREMENT PRIMARY KEY,
   expiryDate DATE NOT NULL,
-  image VARBINARY(30000000) NOT NULL,#num means 30MB
+  documentName VARCHAR(50) NOT NULL,#num means 30MB
   documentType VARCHAR(11) NOT NULL,
   userID BIGINT(10) UNSIGNED,
   FOREIGN KEY (userID) REFERENCES User(userID)

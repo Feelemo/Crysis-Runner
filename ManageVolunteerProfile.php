@@ -40,7 +40,7 @@ include 'printUserDetails.php';
     <main>
       <p class="h4 mb-4">Username Profile</p>
       <div class="form-group row">
-        <label class="col-sm-2 col-form-label">Current Full Name: </label>
+        <label class="col-sm-2 col-form-label">Full Name: </label>
         <label class="col-sm-2 col-form-label"><?php echo $name; ?></label>
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#UpdateFullNameModal">
           Update Full Name
@@ -61,10 +61,11 @@ include 'printUserDetails.php';
             </button>
         </div>
         <hr>
+
         <div class="form-group row">
+          <label class="col-sm-2 col-form-label">Documents</label>
             <ul>
-              <li>Document 1</li>
-              <li>Document 2</li>
+              <?php include "printDocuments.php" ?>
             </ul>
         </div>
         <div class="form-group row">
@@ -193,7 +194,7 @@ include 'printUserDetails.php';
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <form>
+        <form name="docUpload" id="docUpload" method="post" enctype="multipart/form-data" action="UploadDocument.php">
         <div class="modal-body">
 
             <div class="form-group">
@@ -212,13 +213,13 @@ include 'printUserDetails.php';
             </div>
             <div class="form-group">
               <label for="exampleFormControlFile1">Upload File</label>
-              <input type="file" class="form-control-file" id="exampleFormControlFile1">
+              <input type="file" name="document" class="form-control-file" id="document">
               <small>If Certificate, file name should be what is for</small>
             </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-          <button type="button" class="btn btn-primary">Save File</button>
+          <button type="submit" class="btn btn-primary">Save File</button>
         </div>
         </form>
       </div>
@@ -235,5 +236,6 @@ include 'printUserDetails.php';
     updateFullName()
     updatePassword()
     updatePhone()
+    //uploadDoc()
   </script>
 </html>

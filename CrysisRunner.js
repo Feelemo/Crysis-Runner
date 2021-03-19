@@ -172,3 +172,35 @@ function updatePhone(){
 
       });
 }
+function uploadDoc(){
+  $(function () {
+
+        $('#docUpload').on('submit', function (e) {
+          var file_data = $('#document').prop('files')[0];
+          var form_data = new FormData();
+          form_data.file = file_data;
+          data = {form:$('#docUpload').serialize(), doc:form_data};
+          e.preventDefault();
+          $.ajax({
+            type: 'POST',
+            url: 'http://localhost/Crysis-Runner/UploadDocument.php',
+            data: data,
+            cache: false,
+            proccessData: false,
+            success: function (name) {
+              console.log(name);
+              console.log($('#docUpload').serialize());
+              if(name == "Update"){
+                alert("Phone Number Updated");
+                location.reload();
+              }
+            },
+            error: function(datas){
+              alert('form error');
+            }
+          });
+
+        });
+
+      });
+}
