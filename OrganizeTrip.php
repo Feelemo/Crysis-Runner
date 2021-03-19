@@ -84,19 +84,19 @@ include 'printUserDetails.php';
           <legend class="col-form-label col-sm-2 pt-0">Crisis Type</legend>
           <div class="col-sm-10">
             <div class="form-check">
-              <input class="form-check-input" type="radio" name="Type" id="gridRadios1" value="Flood" checked>
+              <input class="form-check-input" type="radio" name="Type" id="gridRadios1" value="FLOOD" checked>
               <label class="form-check-label" for="gridRadios1">
                 Flood
               </label>
             </div>
             <div class="form-check">
-              <input class="form-check-input" type="radio" name="Type" id="gridRadios2" value="Earthquake">
+              <input class="form-check-input" type="radio" name="Type" id="gridRadios2" value="EARTHQUAKE">
               <label class="form-check-label" for="gridRadios2">
                 Earthquake
               </label>
             </div>
 			<div class="form-check">
-              <input class="form-check-input" type="radio" name="Type" id="gridRadios3" value="Wildfire">
+              <input class="form-check-input" type="radio" name="Type" id="gridRadios3" value="WILDFIRE">
               <label class="form-check-label" for="gridRadios3">
                 Wildfire
               </label>
