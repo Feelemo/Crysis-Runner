@@ -38,7 +38,7 @@ include 'printUserDetails.php';
     </header>
     <main>
       <p class="h4 mb-4">Organize a Trip</p>
-      <form action="Crysis-Runner/insertTrip.php">
+      <form action="insertTrip.php" method="post">
         <div class="form-group row">
           <label for="inputDate" class="col-sm-2 col-form-label">Trip Date</label>
           <div class="col-sm-10">
