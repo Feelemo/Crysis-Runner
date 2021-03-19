@@ -38,7 +38,7 @@ include 'printUserDetails.php';
     </header>
     <main>
       <p class="h4 mb-4">Organize a Trip</p>
-      <form>
+      <form action="Crysis-Runner/insertTrip.php">
         <div class="form-group row">
           <label for="inputDate" class="col-sm-2 col-form-label">Trip Date</label>
           <div class="col-sm-10">
@@ -61,36 +61,42 @@ include 'printUserDetails.php';
           <label for="inputDescription" class="col-sm-2 col-form-label">Number of Volunteers Required</label>
 		  <label for="inputDescription" class="col-sm-1 col-form-label"> Minimum</label>
           <div class="col-sm-4">
-            <input type="number" name="Date" class="form-control" id="inputDescription" min="1" step="1">
+            <input type="number" name="Min" class="form-control" id="inputDescription" min="1" step="1">
           </div>
 		  <label for="inputDescription" class="col-sm-1 col-form-label">Maximum</label>
 		  <div class="col-sm-4">
-            <input type="number" name="Date" class="form-control" id="inputDescription" min="1" step="1">
+            <input type="number" name="Max" class="form-control" id="inputDescription" min="1" step="1">
           </div>
         </div>
 		<div class="form-group row">
           <label for="inputDescription" class="col-sm-2 col-form-label">Minimum Duration(in days)</label>
           <div class="col-sm-10">
-            <input type="number" name="Date" class="form-control" id="inputDescription" min="1" step="1">
+            <input type="number" name="Duration" class="form-control" id="inputDescription" min="1" step="1">
+          </div>
+        </div>
+		<div class="form-group row">
+          <label for="inputDescription" class="col-sm-2 col-form-label">Requirements</label>
+          <div class="col-sm-10">
+            <input type="text" name="Requirement" class="form-control" id="inputDescription" placeholder="Requirements">
           </div>
         </div>
       <div class="form-group row">
           <legend class="col-form-label col-sm-2 pt-0">Crisis Type</legend>
           <div class="col-sm-10">
             <div class="form-check">
-              <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="Flood" checked>
+              <input class="form-check-input" type="radio" name="Type" id="gridRadios1" value="Flood" checked>
               <label class="form-check-label" for="gridRadios1">
                 Flood
               </label>
             </div>
             <div class="form-check">
-              <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="Earthquake">
+              <input class="form-check-input" type="radio" name="Type" id="gridRadios2" value="Earthquake">
               <label class="form-check-label" for="gridRadios2">
                 Earthquake
               </label>
             </div>
 			<div class="form-check">
-              <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios3" value="Wildfire">
+              <input class="form-check-input" type="radio" name="Type" id="gridRadios3" value="Wildfire">
               <label class="form-check-label" for="gridRadios3">
                 Wildfire
               </label>
