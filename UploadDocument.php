@@ -20,7 +20,7 @@ $extension = pathinfo($filename, PATHINFO_EXTENSION);
 $file = $_FILES['document']['tmp_name'];
 $size = $_FILES['document']['size'];
 
-if (!in_array($extension, ['zip', 'pdf', 'docx', 'txt'])) {
+if (!in_array($extension, ['zip', 'pdf', 'docx', 'txt', 'jpg', 'jpeg', 'png'])) {
     echo "You file extension must be .zip, .pdf or .docx";
 } elseif ($_FILES['document']['size'] > 30000000) { // file shouldn't be larger than 30Megabyte
     echo "File too large!";
