@@ -10,6 +10,7 @@ $docType = $_POST['documentType'];
 $filename = $_FILES['document']['name'];
 $userID = $_SESSION['ID'];
 // destination of the file on the server
+mkdir('uploads');
 mkdir('uploads/' . $userID);
 $destination = 'uploads/' . $userID . '/' . $filename;
 
