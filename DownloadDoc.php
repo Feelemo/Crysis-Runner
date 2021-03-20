@@ -3,7 +3,7 @@ session_start();
 header("Access-Control-Allow-Origin: *");
 $name = $_GET['file_name'];
 
-$filepath = 'uploads/' . $_SESSION['ID'] ."/" . $name;
+$filepath = 'uploads/' . $name;
 
 if (file_exists($filepath)) {
         header('Content-Description: File Transfer');

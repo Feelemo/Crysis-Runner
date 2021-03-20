@@ -65,7 +65,7 @@ include 'printUserDetails.php';
         <div class="form-group row">
           <label class="col-sm-2 col-form-label">Documents</label>
             <ul>
-              <?php include "printDocuments.php" ?>
+              <?php $volID = $_SESSION['ID']; include "printDocuments.php" ?>
             </ul>
         </div>
         <div class="form-group row">
