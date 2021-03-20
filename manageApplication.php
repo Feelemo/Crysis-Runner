@@ -31,14 +31,13 @@ include 'printUserDetails.php';
       </nav>
   <div class="col-2 bg-light" id="sidebar">
     <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-      <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="OrganizeTrip.php" role="tab" aria-controls="" aria-selected="true">Apply for trip</a>
-      <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="ManageApplication.php" role="tab" aria-controls="" aria-selected="false">My Applications</a>
+      <a class="nav-link" id="v-pills-home-tab" data-toggle="pill" href="OrganizeTrip.php" role="tab" aria-controls="" aria-selected="true">Organize Trip</a>
+      <a class="nav-link active" id="v-pills-profile-tab" data-toggle="pill" href="ManageApplication.php" role="tab" aria-controls="" aria-selected="false">Manage Applications</a>
     </div>
   </div>
     </header>
     <main>
-      <p class="h4 mb-4">Apply to a Trip</p>
-      <form action="insertTrip.php" method="post">
+      <p class="h4 mb-4">Organize a Trip</p>
         <div class="row justify-content-center">
 			<div class="col-auto">
 				<table class="mx-auto table table-hover table-responsive">
@@ -51,18 +50,20 @@ include 'printUserDetails.php';
 
 						//fetch data from three tables in the database
 						$userid = $_SESSION['ID'];
-						$query = "Select tripid, location, description, crisistype, tripdate, minduration, requirements from trip where tripid NOT IN (select tripid from application where userID = '$userid')";
-						$result = mysqli_query($conn, $query);
+						$query = "Select applicationid, user.userid, name, phone, location, tripdate, description, requirements, minduration, status from user, application, trip where user.userid=application.userid and application.tripid=trip.tripid and trip.staffid = $userid order by applicationid";
+						$result2 = mysqli_query($conn, $query);
 					?>
 				
 					<thead>
 						<tr>
+							<th scope="col" class="align-middle">Volunteer Name</th>
+							<th scope="col" class="align-middle">Phone Number</th>
+							<th scope="col" class="align-middle">List of Document</th>
 							<th scope="col" class="align-middle">Destination</th>
-							<th scope="col" class="align-middle">Description</th>
-							<th scope="col" class="align-middle">Crysis Type</th>
 							<th scope="col" class="align-middle">Trip Date</th>
-							<th scope="col" class="align-middle">Minimum Duration (in days)</th>
-							<th scope="col" class="align-middle">Requirement For The Trip</th>
+							<th scope="col" class="align-middle">Trip Description</th>
+							<th scope="col" class="align-middle">Requirements</th>
+							<th scope="col" class="align-middle">Minimum Duration(in days)</th>
 							<th scope="col" class="align-middle"></th>
 						</tr>
 					</thead>
@@ -70,30 +71,72 @@ include 'printUserDetails.php';
 					<?php
 						// If the data exist in the table row, loop through the row from the database
 						// Print application records
-						if (mysqli_num_rows($result) > 0)
+						if (mysqli_num_rows($result2) > 0)
 						{
-							while($record = mysqli_fetch_array($result))
+							while($record = mysqli_fetch_array($result2))
 							{
 					?>
 					<form method="post">
 					<tbody id="patientData">
 						<tr>
+							<td><?php echo $record['name']; ?></td>
+							<td><?php echo $record['phone']; ?></td>
+							<td><?php $volID = $record['userid']; include "printDocuments.php" ?></td>
 							<td><?php echo $record['location']; ?></td>
-							<td><?php echo $record['description']; ?></td>
-							<td><?php echo $record['crisistype']; ?></td>
 							<td><?php echo $record['tripdate']; ?></td>
-							<td><?php echo $record['minduration']; ?></td>
+							<td><?php echo $record['description']; ?></td>
 							<td><?php echo $record['requirements']; ?></td>
-							<td><button name="inputtripid" type="submit" class="btn2 btn-primary" formaction= "http://localhost/Crysis-Runner/addApplication.php" value=<?php echo $record['tripid'];?>> Join </button></td>
+							<td><?php echo $record['minduration']; ?></td>
+							<td>
+							<?php 
+								if($record['status'] == "NEW"){?>
+									<button name="Manage" type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Manage</button>
+								<?php } ?>
+							</td>
 						</tr>
 					</tbody>
+
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+		<h4 class="modal-title">Update Application Result</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="modal-body">
+		<form action="updateApplication.php" method="POST">
+        <div class="form-group row">
+          <label for="inputDescription" class="col-sm-2 col-form-label">Remarks</label>
+          <div class="col-sm-10">
+            <input type="text" name="Remarks" class="form-control" id="inputRemarks" placeholder="Remarks">
+          </div>
+        </div>
+		<label for="residenceid" class="col-sm-6 col-lg-6 col-form-label"><i class="fas fa-poll-h"></i>Result</label>
+				<div class="col-sm-12 col-lg-6">
+				<!--let user choose result-->
+					<select class="form-control" name="result" id="result">
+						<option value ="ACCEPTED">ACCEPTED</option>
+						<option value ="REJECTED">REJECTED</option>
+					</select><br>
+				</div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+        <button type="submit" class="btn btn-primary">Update Application Result</button>
+      </div>
+	  </form>
+    </div>
+
+  </div>
+</div>
 					</form>
 					<?php }} ?>
 				</table>
 			</div>
 		</div>
 		<hr class="my-4">
-  </form>
 </main>
   </body>
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>

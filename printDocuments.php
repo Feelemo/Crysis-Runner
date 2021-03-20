@@ -1,5 +1,4 @@
 <?php
-header("Access-Control-Allow-Origin: *");
 //before the include statement, put $volID = (the volunteers ID)
 $conn = new mysqli("localhost", "root", "", "CrysisRunnerDB");
 $sql = "SELECT expiryDate, documentName, documentType FROM Document
