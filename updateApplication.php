@@ -6,12 +6,33 @@ session_start();
 $conn = new mysqli("localhost","root","","crysisrunnerdb");
 if ($conn->connect_error){
 	die("Connection failure");
-
-$sql = "INSERT INTO trip (description,crisistype,tripDate,location,minVolunteers,maxVolunteers,minDuration,requirements,staffID)
-VALUES ('$tripDescription','$tripType','$tripDate','$tripDestination','$tripMin','$tripMax','$tripDuration','$tripRequirement','$staffid')";
+}
+if($_POST['Remarks'] == ""){
+	$remark = "-";
+}
+else{
+	$remark = $_POST['Remarks'];
+}
+$ACCEPTED = "ACCEPTED";
+$result = $_POST['result'];
+$applicationid = $_POST['applicationid'];
+$exceedNumber = "Exceed volunteer number.";
+$exceedNumberResult = "REJECTED";
+$tripid = $_POST['tripid'];
+$NEW = "NEW";
+$sql = "Update application set remarks = '$remark', status = '$result' where applicationid = '$applicationid'";
 
 if ($conn->query($sql) === TRUE) {
-  echo "<script type='text/javascript'>
+	$sql2 ="select COUNT(*) from application where STATUS = '$ACCEPTED' and tripid = '$tripid';";
+	$applicationNumber = $conn->query($sql2);
+	$sql3 ="select maxVolunteers from trip where tripid = '$tripid';";
+	$maxVol = $conn->query($sql3);
+	if($applicationNumber == $maxVol){
+		$sql4 = "Update application set remarks = '$exceedNumber', status = '$exceedNumberResult' where tripid = '$tripid' and status ='$NEW';";
+		$conn->query($sql4);
+	}
+		
+  echo  "<script type='text/javascript'>
 		alert('Application update successfully');
 		window.location = 'manageApplication.php';
 		</script>";

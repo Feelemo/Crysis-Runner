@@ -50,7 +50,7 @@ include 'printUserDetails.php';
 
 						//fetch data from three tables in the database
 						$userid = $_SESSION['ID'];
-						$query = "Select applicationid, user.userid, name, phone, location, tripdate, description, requirements, minduration, status from user, application, trip where user.userid=application.userid and application.tripid=trip.tripid and trip.staffid = $userid order by applicationid";
+						$query = "Select applicationid, user.userid, name, phone, location, tripdate, description, requirements, minduration, status,trip.tripid from user, application, trip where user.userid=application.userid and application.tripid=trip.tripid and trip.staffid = $userid order by applicationid";
 						$result2 = mysqli_query($conn, $query);
 					?>
 				
@@ -64,6 +64,7 @@ include 'printUserDetails.php';
 							<th scope="col" class="align-middle">Trip Description</th>
 							<th scope="col" class="align-middle">Requirements</th>
 							<th scope="col" class="align-middle">Minimum Duration(in days)</th>
+							<th scope="col" class="align-middle">Status</th>
 							<th scope="col" class="align-middle"></th>
 						</tr>
 					</thead>
@@ -76,7 +77,6 @@ include 'printUserDetails.php';
 							while($record = mysqli_fetch_array($result2))
 							{
 					?>
-					<form method="post">
 					<tbody id="patientData">
 						<tr>
 							<td><?php echo $record['name']; ?></td>
@@ -87,16 +87,17 @@ include 'printUserDetails.php';
 							<td><?php echo $record['description']; ?></td>
 							<td><?php echo $record['requirements']; ?></td>
 							<td><?php echo $record['minduration']; ?></td>
+							<td><?php echo $record['status']; ?></td>
 							<td>
 							<?php 
 								if($record['status'] == "NEW"){?>
-									<button name="Manage" type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Manage</button>
+									<button name="Manage" type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal<?php echo $record['applicationid']; ?>">Manage</button>
 								<?php } ?>
 							</td>
 						</tr>
 					</tbody>
 
-<div id="myModal" class="modal fade" role="dialog">
+<div id="myModal<?php echo $record['applicationid']; ?>" class="modal fade" role="dialog">
   <div class="modal-dialog">
 
     <!-- Modal content-->
@@ -108,12 +109,35 @@ include 'printUserDetails.php';
       <div class="modal-body">
 		<form action="updateApplication.php" method="POST">
         <div class="form-group row">
+			<label  class="col-sm-6 col-lg-6 col-form-label">Application ID:</label>
+				<div class="col-sm-12 col-lg-6">
+					<input type="text" class="form-control" value="<?php echo $record['applicationid']; ?>" name="applicationid" readonly><br>
+				</div>
+			<label  class="col-sm-6 col-lg-6 col-form-label">Trip ID:</label>
+				<div class="col-sm-12 col-lg-6">
+					<input type="text" class="form-control" value="<?php echo $record['tripid']; ?>" name="tripid" readonly><br>
+				</div>
+			<label  class="col-sm-6 col-lg-6 col-form-label"> Volunteer name:</label>
+				<div class="col-sm-12 col-lg-6">
+					<input type="name" class="form-control" value="<?php echo $record['name']; ?>" name="name" readonly><br>
+				</div>
+
+			<label  class="col-sm-6 col-lg-6 col-form-label">Destination</label>
+				<div class="col-sm-12 col-lg-6">
+					<input type="text" class="form-control" value="<?php echo $record['location']; ?>" name="destination" readonly><br>
+				</div>
+
+										
+			<label  class="col-sm-6 col-lg-6 col-form-label">Trip Date</label>
+				<div class="col-sm-12 col-lg-6">
+					<input type="text" class="form-control" value="<?php echo $record['tripdate']; ?>" name="date" readonly><br>
+				</div>
           <label for="inputDescription" class="col-sm-2 col-form-label">Remarks</label>
           <div class="col-sm-10">
             <input type="text" name="Remarks" class="form-control" id="inputRemarks" placeholder="Remarks">
           </div>
         </div>
-		<label for="residenceid" class="col-sm-6 col-lg-6 col-form-label"><i class="fas fa-poll-h"></i>Result</label>
+		<label  class="col-sm-6 col-lg-6 col-form-label"><i class="fas fa-poll-h"></i>Result</label>
 				<div class="col-sm-12 col-lg-6">
 				<!--let user choose result-->
 					<select class="form-control" name="result" id="result">
@@ -131,7 +155,7 @@ include 'printUserDetails.php';
 
   </div>
 </div>
-					</form>
+
 					<?php }} ?>
 				</table>
 			</div>
