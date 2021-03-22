@@ -31,8 +31,8 @@ include 'printUserDetails.php';
       </nav>
   <div class="col-2 bg-light" id="sidebar">
     <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-      <a class="nav-link" id="v-pills-home-tab" data-toggle="pill" href="OrganizeTrip.php" role="tab" aria-controls="" aria-selected="true">Organize Trip</a>
-      <a class="nav-link active" id="v-pills-profile-tab" data-toggle="pill" href="ManageApplication.php" role="tab" aria-controls="" aria-selected="false">Manage Applications</a>
+      <a class="nav-link" id="v-pills-home-tab"  href="OrganizeTrip.php" role="tab" aria-controls="" aria-selected="true">Organize Trip</a>
+      <a class="nav-link active" id="v-pills-profile-tab"  href="ManageApplication.php" role="tab" aria-controls="" aria-selected="false">Manage Applications</a>
     </div>
   </div>
     </header>
