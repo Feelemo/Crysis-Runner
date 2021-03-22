@@ -22,7 +22,7 @@ include 'printUserDetails.php';
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
           <div class="aligning">
           <div class="dropdown-header">Position: Manager</div>
-          <button class="dropdown-item" type="button"><a>Edit User Profile</a></button>
+          <button class="dropdown-item" type="button"><a href="ManageManagerProfile.php">Edit User Profile</a></button>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item text-danger" href="">Logout</a>
           </div>

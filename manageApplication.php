@@ -22,7 +22,7 @@ include 'printUserDetails.php';
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
           <div class="aligning">
           <div class="dropdown-header">Position: CRS Staff</div>
-          <button class="dropdown-item" type="button"><a>Edit User Profile</a></button>
+          <button class="dropdown-item" type="button"><a href="ManageAdminProfile.php">Edit User Profile</a></button>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item text-danger" href="">Logout</a>
           </div>
@@ -32,7 +32,7 @@ include 'printUserDetails.php';
   <div class="col-2 bg-light" id="sidebar">
     <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
       <a class="nav-link" id="v-pills-home-tab"  href="OrganizeTrip.php" role="tab" aria-controls="" aria-selected="true">Organize Trip</a>
-      <a class="nav-link active" id="v-pills-profile-tab"  href="ManageApplication.php" role="tab" aria-controls="" aria-selected="false">Manage Applications</a>
+      <a class="nav-link active" id="v-pills-profile-tab"  href="manageApplication.php" role="tab" aria-controls="" aria-selected="false">Manage Applications</a>
     </div>
   </div>
     </header>
