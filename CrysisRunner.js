@@ -16,7 +16,7 @@ function login(){
                 window.location.href = "OrganizeTrip.php";
               }
               if(position == "Volunteer"){
-                window.location.href = "VolunteerMenu.php";
+                window.location.href = "applyTrip.php";
               }
               if(position == "Not Found"){
                 // let notification = document.getElementsByTagName('small')[0];
