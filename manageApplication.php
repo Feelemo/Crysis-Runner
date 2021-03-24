@@ -37,7 +37,7 @@ include 'printUserDetails.php';
   </div>
     </header>
     <main>
-      <p class="h4 mb-4">Organize a Trip</p>
+      <p class="h4 mb-4">Manage Application</p>
         <div class="row justify-content-center">
 			<div class="col-auto">
 				<table class="mx-auto table table-hover table-responsive">

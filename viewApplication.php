@@ -37,7 +37,7 @@ include 'printUserDetails.php';
   </div>
     </header>
     <main>
-      <p class="h4 mb-4">Organize a Trip</p>
+      <p class="h4 mb-4">My Application</p>
       <form action="insertTrip.php" method="post">
         <div class="row justify-content-center">
 			<div class="col-auto">
