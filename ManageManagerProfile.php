@@ -24,7 +24,7 @@ include 'printUserDetails.php';
           <div class="dropdown-header">Position: Manage</div>
           <button class="dropdown-item" type="button"><a href="ManageManagerProfile.php">Edit User Profile</a></button>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item text-danger" href="">Logout</a>
+          <a class="dropdown-item text-danger" href="Logout.php">Logout</a>
           </div>
         </div>
       </div>
