@@ -24,7 +24,7 @@ include 'printUserDetails.php';
           <div class="dropdown-header">Position: Volunteer</div>
           <button class="dropdown-item" type="button"><a href="ManageVolunteerProfile.php">Edit User Profile</a></button>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item text-danger" href="">Logout</a>
+          <a class="dropdown-item text-danger" href="Logout.php">Logout</a>
           </div>
         </div>
       </div>
@@ -54,7 +54,7 @@ include 'printUserDetails.php';
 						$query = "Select tripid, location, description, crisistype, tripdate, minduration, requirements from trip where tripid NOT IN (select tripid from application where userID = '$userid')";
 						$result = mysqli_query($conn, $query);
 					?>
-				
+
 					<thead>
 						<tr>
 							<th scope="col" class="align-middle">Destination</th>
@@ -66,7 +66,7 @@ include 'printUserDetails.php';
 							<th scope="col" class="align-middle"></th>
 						</tr>
 					</thead>
-					
+
 					<?php
 						// If the data exist in the table row, loop through the row from the database
 						// Print application records
