@@ -24,7 +24,7 @@ include 'printUserDetails.php';
           <div class="dropdown-header">Position: CRS Staff</div>
           <button class="dropdown-item" type="button"><a href="ManageAdminProfile.php">Edit User Profile</a></button>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item text-danger" href="">Logout</a>
+          <a class="dropdown-item text-danger" href="Logout.php">Logout</a>
           </div>
         </div>
       </div>
@@ -53,7 +53,7 @@ include 'printUserDetails.php';
 						$query = "Select applicationid, user.userid, name, phone, location, tripdate, description, requirements, minduration, status,trip.tripid from user, application, trip where user.userid=application.userid and application.tripid=trip.tripid and trip.staffid = $userid order by applicationid";
 						$result2 = mysqli_query($conn, $query);
 					?>
-				
+
 					<thead>
 						<tr>
 							<th scope="col" class="align-middle">Volunteer Name</th>
@@ -68,7 +68,7 @@ include 'printUserDetails.php';
 							<th scope="col" class="align-middle"></th>
 						</tr>
 					</thead>
-					
+
 					<?php
 						// If the data exist in the table row, loop through the row from the database
 						// Print application records
@@ -89,7 +89,7 @@ include 'printUserDetails.php';
 							<td><?php echo $record['minduration']; ?></td>
 							<td><?php echo $record['status']; ?></td>
 							<td>
-							<?php 
+							<?php
 								if($record['status'] == "NEW"){?>
 									<button name="Manage" type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal<?php echo $record['applicationid']; ?>">Manage</button>
 								<?php } ?>
@@ -127,7 +127,7 @@ include 'printUserDetails.php';
 					<input type="text" class="form-control" value="<?php echo $record['location']; ?>" name="destination" readonly><br>
 				</div>
 
-										
+
 			<label  class="col-sm-6 col-lg-6 col-form-label">Trip Date</label>
 				<div class="col-sm-12 col-lg-6">
 					<input type="text" class="form-control" value="<?php echo $record['tripdate']; ?>" name="date" readonly><br>
